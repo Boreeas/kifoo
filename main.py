@@ -7,8 +7,11 @@ MIN_STORE_MENTIONS = 2  # Hashtag mentioned at least 2 times in ROTATE_RATE seco
 
 with open("keys.config", "r") as f:
     config = {}
-    for line in f.readline():
-        k, v = line.strip().split()
+    for line in f.readlines():
+        line = line.strip()
+        if not line:
+            continue
+        k, v = line.split()
         config[k] = v
 
 consumer_key = config["consumer_key"]
